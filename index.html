@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan del agente de evaluación de leads · Leasein</title>
+<meta name="description" content="Plan de 13 semanas para construir un agente que automatice la primera atención inbound y prepare la EVA en Leasein.">
+<style>
+  :root {
+    --bg: #ffffff; --surface: #f6f6f4; --ink: #1d1d1b; --quiet: #5f5f5a; --rule: #e3e2dd;
+    --axis: #b9b8b0; --accent: #2b6fd6; --accent-tint: rgba(43,111,214,.12); --tint: #efefec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1b1b1a; --surface: #242422; --ink: #ecebe6; --quiet: #a5a49c; --rule: #3a3936;
+      --axis: #6c6b65; --accent: #6aa2ff; --accent-tint: rgba(106,162,255,.16); --tint: #2a2a28;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1b1b1a; --surface: #242422; --ink: #ecebe6; --quiet: #a5a49c; --rule: #3a3936;
+    --axis: #6c6b65; --accent: #6aa2ff; --accent-tint: rgba(106,162,255,.16); --tint: #2a2a28;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  main { max-width: 860px; margin: 0 auto; padding: 48px 16px 80px; }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 8px; }
+  h2 { font-size: 1.35rem; margin: 48px 0 12px; padding-top: 8px; border-top: 1px solid var(--rule); }
+  .byline { color: var(--quiet); font-size: .9rem; margin-bottom: 24px; }
+  nav { background: var(--surface); border-radius: 8px; padding: 12px 16px; font-size: .92rem; }
+  nav ol { margin: 4px 0 0; padding-left: 20px; columns: 2; }
+  nav a, a { color: var(--accent); }
+  .table-wrap { overflow-x: auto; margin: 16px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+  th { background: var(--surface); font-weight: 600; }
+  code { background: var(--surface); padding: 1px 5px; border-radius: 4px; font-size: .88em; }
+  figure { margin: 20px 0; }
+  figure svg { width: 100%; height: auto; display: block; }
+  figcaption { color: var(--quiet); font-size: .85rem; margin-top: 6px; }
+  ul.tasks { list-style: none; padding-left: 0; }
+  ul.tasks li::before { content: "☐"; margin-right: 8px; color: var(--quiet); }
+  /* SVG tokens */
+  .ink { fill: var(--ink); } .quiet { fill: var(--quiet); }
+  .box { fill: none; stroke: var(--axis); stroke-width: 1.25; }
+  .box-accent { fill: var(--accent-tint); stroke: var(--accent); stroke-width: 2; }
+  .box-tint { fill: var(--tint); stroke: var(--axis); stroke-width: 1.25; }
+  .edge { fill: none; stroke: var(--axis); stroke-width: 1.25; }
+  .grid { stroke: var(--rule); }
+  .arrowhead { fill: var(--axis); }
+  .bar { fill: var(--tint); stroke: var(--axis); stroke-width: 1.25; }
+  .gate { fill: var(--axis); }
+  .golive { fill: var(--accent); }
+  .golive-line { stroke: var(--accent); stroke-width: 1.25; stroke-dasharray: 4 4; }
+  @media (max-width: 600px) { nav ol { columns: 1; } h1 { font-size: 1.6rem; } }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Plan del agente de evaluación de leads · Leasein</h1>
+<div class="byline">26 de octubre de 2026 · Raúl Llerena</div>
+
+<nav>
+  <strong>Contenido</strong>
+  <ol>
+    <li><a href="#alcance">Resumen y alcance</a></li>
+    <li><a href="#arquitectura">Arquitectura</a></li>
+    <li><a href="#decisiones">Decisiones previas</a></li>
+    <li><a href="#integraciones">Integraciones</a></li>
+    <li><a href="#fases">Plan por fases</a></li>
+    <li><a href="#equipo">Equipo y roles</a></li>
+    <li><a href="#pruebas">Pruebas, piloto y métricas</a></li>
+    <li><a href="#riesgos">Riesgos y mitigaciones</a></li>
+    <li><a href="#pasos">Próximos pasos de esta semana</a></li>
+  </ol>
+</nav>
+
+<h2 id="alcance">Resumen y alcance</h2>
+<p>En 13 semanas (2 de noviembre de 2026 a 29 de enero de 2027) el agente atiende solo la primera atención inbound (etapas 1 a 5) y prepara en modo sombra el borrador de la EVA (etapa 8). Lo construye el equipo de desarrollo propio sobre la API de Claude, con integración directa a WhatsApp Business, Odoo y Sentinel.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Etapa del proceso</th><th>Qué hace el agente</th><th>Quién decide</th></tr></thead>
+  <tbody>
+    <tr><td>1 · Ingreso</td><td>Recibe el lead por WhatsApp y <code>conversemos@</code>, lo registra en el Monitor de Leads, detecta duplicados y canaliza lo no comercial</td><td>Agente</td></tr>
+    <tr><td>2 · Primer contacto</td><td>Responde en menos de 15 minutos en horario y pide los datos mínimos en un solo mensaje</td><td>Agente</td></tr>
+    <tr><td>3 · Validación y filtro</td><td>Consulta SUNAT y Sentinel, verifica dominio del correo, web y teléfono, detecta cliente de cartera</td><td>Agente; los casos grises van a riesgos</td></tr>
+    <tr><td>4 · Calificación</td><td>BANT, señales de intención, perfil objetivo, puntaje 0 a 8, nutrición de MQL</td><td>Agente</td></tr>
+    <tr><td>5 · Registro y derivación</td><td>Crea la oportunidad en Odoo con los 7 campos, asigna por segmento y rotación, publica la derivación y espera la confirmación</td><td>Agente; el ejecutivo confirma</td></tr>
+    <tr><td>8 · EVA</td><td>Lee los Sentinel, calcula el ratio, revisa protestos y coactivas, propone condición de pago y garantías</td><td>Coordinador de Riesgos e Inversión</td></tr>
+  </tbody>
+</table></div>
+<p><strong>Fuera de alcance en esta versión:</strong> diagnóstico, disponibilidad, precio, envío de la cotización, negociación y cierre (etapas 6, 7 y 9). Quedan para una segunda versión.</p>
+<p><strong>Reglas que el agente nunca rompe:</strong> no da precios ni plazos de entrega, no promete condiciones de pago, no usa siglas internas, no emite la EVA ni aprueba excepciones.</p>
+
+<h2 id="arquitectura">Arquitectura</h2>
+<p>Toda decisión de elegibilidad, puntaje, segmento y asignación sale de un motor de reglas en código; Claude solo conversa, extrae datos y redacta.</p>
+<figure>
+<svg viewBox="0 0 760 368" role="img" aria-label="Las reglas deciden; Claude conversa y extrae datos" font-size="11.5">
+  <defs><marker id="arq-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="arrowhead"/></marker></defs>
+  <text x="24" y="34" font-size="15" font-weight="600" class="ink">Las reglas deciden; Claude conversa y extrae datos</text>
+  <g class="edge">
+    <path d="M200 116H232" marker-end="url(#arq-arrow)"/>
+    <path d="M488 116H520" marker-start="url(#arq-arrow)" marker-end="url(#arq-arrow)"/>
+    <path d="M360 168V216" marker-start="url(#arq-arrow)" marker-end="url(#arq-arrow)"/>
+    <path d="M628 168V216" marker-end="url(#arq-arrow)"/>
+  </g>
+  <text x="368" y="196" class="quiet">herramientas</text>
+  <text x="636" y="196" class="quiet">escala</text>
+  <rect x="24" y="64" width="176" height="104" rx="8" class="box"/>
+  <text x="36" y="88" font-size="13" font-weight="600" class="ink">Canales de entrada</text>
+  <text x="36" y="104" class="ink">WhatsApp Business</text>
+  <text x="36" y="120" class="ink">conversemos@leasein.pe</text>
+  <text x="36" y="136" class="ink">Formularios y cotizador</text>
+  <text x="36" y="152" class="ink">Redes sociales</text>
+  <rect x="232" y="64" width="256" height="104" rx="8" class="box"/>
+  <text x="244" y="88" font-size="13" font-weight="600" class="ink">Agente (Claude)</text>
+  <text x="244" y="104" class="ink">Conversa y pide los datos mínimos</text>
+  <text x="244" y="120" class="ink">Extrae RUC, cantidad, plazo, BANT</text>
+  <text x="244" y="136" class="ink">Redacta derivación y borrador EVA</text>
+  <text x="244" y="152" class="ink">Pasa a humano si se lo piden</text>
+  <rect x="520" y="64" width="216" height="104" rx="8" class="box-accent"/>
+  <text x="532" y="88" font-size="13" font-weight="600" class="ink">Motor de reglas (código)</text>
+  <text x="532" y="104" class="ink">Filtro RUC, SUNAT y Sentinel</text>
+  <text x="532" y="120" class="ink">Puntaje 0 a 8, SQL o MQL</text>
+  <text x="532" y="136" class="ink">Segmento y asignación</text>
+  <text x="532" y="152" class="ink">Ratio, protestos y garantías</text>
+  <rect x="24" y="216" width="464" height="128" rx="8" class="box-tint"/>
+  <text x="40" y="240" font-size="13" font-weight="600" class="ink">Conectores (API)</text>
+  <g class="box">
+    <rect x="40" y="256" width="133" height="32" rx="8"/><rect x="189" y="256" width="133" height="32" rx="8"/><rect x="338" y="256" width="133" height="32" rx="8"/>
+    <rect x="40" y="296" width="133" height="32" rx="8"/><rect x="189" y="296" width="133" height="32" rx="8"/><rect x="338" y="296" width="133" height="32" rx="8"/>
+  </g>
+  <g font-size="13" text-anchor="middle" class="ink">
+    <text x="106.5" y="276">SUNAT</text><text x="255.5" y="276">Sentinel</text><text x="404.5" y="276">Odoo</text>
+    <text x="106.5" y="316">Monitor de Leads</text><text x="255.5" y="316">Corein</text><text x="404.5" y="316">Canal interno</text>
+  </g>
+  <rect x="520" y="216" width="216" height="128" rx="8" class="box"/>
+  <text x="532" y="240" font-size="13" font-weight="600" class="ink">Control humano</text>
+  <text x="532" y="256" class="ink">Inbound: piloto y casos grises</text>
+  <text x="532" y="272" class="ink">Ejecutivo confirma la toma</text>
+  <text x="532" y="288" class="ink">Riesgos emite la EVA</text>
+  <text x="532" y="304" class="ink">Comité de Big Deals</text>
+</svg>
+<figcaption>Arquitectura del agente · 5 componentes</figcaption>
+</figure>
+<p>El agente llama a los conectores como herramientas, entrega los datos al motor de reglas y actúa según su resultado; lo que el motor marca como excepción pasa a una persona. Cada decisión queda registrada con la regla que la produjo, para auditoría.</p>
+
+<h2 id="decisiones">Decisiones previas</h2>
+<p>El agente necesita una sola regla por tema, firmada antes del 13 de noviembre. Estas contradicciones del proceso bloquean la construcción; la columna de propuesta es la lectura recomendada del documento de proceso.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Tema</th><th>Propuesta para el agente</th><th>Decide</th><th>Bloquea</th></tr></thead>
+  <tbody>
+    <tr><td>Filtro con CPP, Deficiente, Dudoso o Pérdida</td><td>No descartar: derivar a riesgos con la garantía que corresponda</td><td>Coordinador de Riesgos</td><td>Etapa 3</td></tr>
+    <tr><td>Criterio de segmento M&amp;P / MGC</td><td>Uno solo: deuda bancaria o trabajadores en la ficha RUC</td><td>Coordinador de Riesgos</td><td>Asignación</td></tr>
+    <tr><td>Registro del lead que no califica</td><td>Crear en Odoo y cancelar con motivo</td><td>Planeamiento Comercial</td><td>Etapa 5</td></tr>
+    <tr><td>EIRL</td><td>Excluir o escalar al Comité de Inversiones</td><td>Coordinador de Riesgos</td><td>Etapa 3</td></tr>
+    <tr><td>Persona natural</td><td>Excluir salvo excepción de notarías y estudios con RUC 10</td><td>Coordinador de Riesgos</td><td>Etapa 3</td></tr>
+    <tr><td>Plazo máximo M&amp;P</td><td>12 meses, con o sin excepción</td><td>Coordinador de Riesgos</td><td>Etapa 4</td></tr>
+    <tr><td>Horario de atención</td><td>Un solo horario para SLA del agente</td><td>Planeamiento Comercial</td><td>Etapa 2</td></tr>
+    <tr><td>Atención fuera de horario</td><td>Si el agente responde fuera de horario o solo acusa recibo</td><td>Planeamiento Comercial</td><td>Etapa 2</td></tr>
+    <tr><td>Empresa reconocida (big deal)</td><td>Lista cerrada de empresas, mantenida por el comité</td><td>Comité de Big Deals</td><td>Etapa 5</td></tr>
+    <tr><td>Sector de servicios para el ratio</td><td>Lista cerrada de actividades CIIU</td><td>Coordinador de Riesgos</td><td>EVA</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="integraciones">Integraciones</h2>
+<p>WhatsApp, Odoo y Sentinel ya tienen API; falta confirmar SUNAT, el Monitor de Leads, el canal interno y Corein en la semana 1.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Sistema</th><th>Operaciones que usa el agente</th><th>Etapa</th><th>Estado</th></tr></thead>
+  <tbody>
+    <tr><td>WhatsApp Business API</td><td>Recibir y enviar mensajes, plantillas aprobadas para los contactos de nutrición fuera de la ventana de 24 horas</td><td>1, 2, 4</td><td>API disponible</td></tr>
+    <tr><td>Correo <code>conversemos@leasein.pe</code></td><td>Leer entrantes, responder, adjuntar contenido de nutrición</td><td>1, 2, 4</td><td>Por confirmar (Gmail o Microsoft 365)</td></tr>
+    <tr><td>Formularios web y cotizador</td><td>Recibir el lead; el cotizador ya crea cliente y oportunidad en Odoo</td><td>1</td><td>Por confirmar webhook</td></tr>
+    <tr><td>SUNAT</td><td>Consulta RUC: estado, condición, actividad, domicilio, trabajadores, anexos</td><td>3, 8</td><td>Por definir proveedor de consulta</td></tr>
+    <tr><td>Sentinel (Experian)</td><td>Reporte de empresa y de representante: calificación SBS, deuda directa mensual, protestos, coactivas</td><td>3, 8</td><td>API disponible; revisar límites de uso y costo por consulta</td></tr>
+    <tr><td>Odoo</td><td>Buscar cliente por RUC, sincronizar con SUNAT, crear y cancelar oportunidad, asignar, programar actividad, leer cartera y responsable</td><td>1, 3, 5</td><td>API disponible</td></tr>
+    <tr><td>Monitor de Leads</td><td>Registrar hora, canal, campaña, fuente, tiempo de atención y resultado</td><td>1, 5</td><td>Por confirmar dónde vive</td></tr>
+    <tr><td>Canal interno de derivación</td><td>Publicar la derivación etiquetando al ejecutivo y leer su confirmación</td><td>5</td><td>Por confirmar (Slack, Teams o WhatsApp)</td></tr>
+    <tr><td>Corein</td><td>Leer segmento vigente y equipos alquilados del cliente</td><td>3, 5</td><td>Por confirmar acceso</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="fases">Plan por fases</h2>
+<p>Cinco fases en 13 semanas; las fases 1 y 2 se solapan dos semanas porque las construyen personas distintas.</p>
+<figure>
+<svg viewBox="0 0 760 384" role="img" aria-label="El agente entra a producción el 29 de enero, tras dos gates" font-size="13">
+  <text x="24" y="28" font-size="15" font-weight="600" class="ink">El agente entra a producción el 29 de enero, tras dos gates</text>
+  <text x="24" y="48" font-size="11.5" class="quiet">Plan por fases, cada dos semanas · rombos = gates e hitos</text>
+  <g class="grid">
+    <line x1="260" x2="260" y1="88" y2="364"/><line x1="314.1" x2="314.1" y1="88" y2="364"/><line x1="368.2" x2="368.2" y1="88" y2="364"/>
+    <line x1="422.3" x2="422.3" y1="88" y2="364"/><line x1="476.4" x2="476.4" y1="88" y2="364"/><line x1="530.5" x2="530.5" y1="88" y2="364"/>
+    <line x1="584.5" x2="584.5" y1="88" y2="364"/>
+  </g>
+  <g font-size="11.5" text-anchor="middle" class="quiet">
+    <text x="260" y="78">2 Nov</text><text x="314.1" y="78">16 Nov</text><text x="368.2" y="78">30 Nov</text><text x="422.3" y="78">14 Dic</text>
+    <text x="476.4" y="78">28 Dic</text><text x="530.5" y="78">11 Ene</text><text x="584.5" y="78">25 Ene</text>
+  </g>
+  <line x1="260" x2="600" y1="88" y2="88" class="edge"/>
+  <line x1="600" x2="600" y1="88" y2="364" class="golive-line"/>
+  <!-- filas -->
+  <rect x="260" y="105" width="42.5" height="14" rx="7" class="bar"/>
+  <text x="316.5" y="116" font-size="11.5" class="quiet">2 Nov a 13 Nov</text>
+  <path d="M302.5 134l8 8l-8 8l-8 -8z" class="gate"/>
+  <text x="316.5" y="146" font-size="11.5" class="quiet">13 Nov</text>
+  <rect x="314.1" y="165" width="96.6" height="14" rx="7" class="bar"/>
+  <text x="424.7" y="176" font-size="11.5" class="quiet">16 Nov a 11 Dic</text>
+  <rect x="368.2" y="195" width="92.7" height="14" rx="7" class="bar"/>
+  <text x="474.9" y="206" font-size="11.5" class="quiet">30 Nov a 24 Dic</text>
+  <path d="M460.9 224l8 8l-8 8l-8 -8z" class="gate"/>
+  <text x="474.9" y="236" font-size="11.5" class="quiet">24 Dic</text>
+  <rect x="476.4" y="255" width="42.5" height="14" rx="7" class="bar"/>
+  <text x="462.4" y="266" font-size="11.5" text-anchor="end" class="quiet">28 Dic a 8 Ene</text>
+  <rect x="476.4" y="285" width="123.6" height="14" rx="7" class="bar"/>
+  <text x="614" y="296" font-size="11.5" class="quiet">28 Dic a 29 Ene</text>
+  <rect x="530.5" y="315" width="69.5" height="14" rx="7" class="bar"/>
+  <text x="614" y="326" font-size="11.5" class="quiet">11 Ene a 29 Ene</text>
+  <path d="M600 344l8 8l-8 8l-8 -8z" class="golive"/>
+  <text x="614" y="356" font-size="11.5" font-weight="600" class="ink">29 Ene</text>
+  <!-- nombres -->
+  <text x="24" y="116" class="ink">0 · Preparación y decisiones</text>
+  <text x="24" y="146" class="quiet">Gate 1: reglas firmadas</text>
+  <text x="24" y="176" class="ink">1 · Reglas e integraciones</text>
+  <text x="24" y="206" class="ink">2 · Agente conversacional</text>
+  <text x="24" y="236" class="quiet">Gate 2: 90 % en histórico</text>
+  <text x="24" y="266" class="ink">3 · Piloto en sombra</text>
+  <text x="24" y="296" class="ink">Borrador de EVA en sombra</text>
+  <text x="24" y="326" class="ink">4 · Producción gradual</text>
+  <text x="24" y="356" font-weight="600" class="ink">Primera atención al 100 %</text>
+</svg>
+<figcaption>Cronograma · 5 fases, 2 gates</figcaption>
+</figure>
+<p>La EVA asistida queda en sombra hasta el final: pasa a uso real solo cuando riesgos acepte 80 % de los borradores sin cambios.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Fase</th><th>Entregables</th><th>Criterio de salida</th></tr></thead>
+  <tbody>
+    <tr><td>0 · Preparación</td><td>Decisiones previas firmadas, accesos de prueba a las APIs, set histórico etiquetado, guion de conversación y rúbrica de tono</td><td>Gate 1: riesgos y planeamiento firman la tabla de reglas</td></tr>
+    <tr><td>1 · Reglas e integraciones</td><td>Conectores SUNAT, Sentinel, Odoo, Monitor y canal interno; motor de reglas configurable con pruebas por umbral; registro de auditoría</td><td>Todas las pruebas de reglas en verde; alta y cancelación de oportunidades en el Odoo de prueba</td></tr>
+    <tr><td>2 · Agente conversacional</td><td>Agente en WhatsApp y correo: datos mínimos, BANT, puntaje, nutrición con plantillas aprobadas, derivación con confirmación, paso a humano</td><td>Gate 2: 90 % de coincidencia en el set histórico y 0 respuestas prohibidas en 30 conversaciones simuladas</td></tr>
+    <tr><td>3 · Piloto en sombra</td><td>Agente procesando leads reales con aprobación humana de cada mensaje; borrador de EVA para riesgos</td><td>Metas de la sección de métricas durante 2 semanas seguidas</td></tr>
+    <tr><td>4 · Producción gradual</td><td>Primero leads de WhatsApp en horario, luego correo y formularios, luego fuera de horario; revisión semanal de casos escalados</td><td>Primera atención 100 % con el agente; decidir el alcance de la versión 2 (etapas 6, 7 y 9)</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="equipo">Equipo y roles</h2>
+<p>El núcleo técnico son dos desarrolladores a tiempo completo; el negocio aporta dueños de reglas y revisores del piloto.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Rol</th><th>Quién</th><th>Dedicación</th><th>Responsabilidad</th></tr></thead>
+  <tbody>
+    <tr><td>Dueño del producto</td><td>Por asignar (Planeamiento Comercial)</td><td>30 %</td><td>Prioriza, firma alcance y criterios de salida de cada fase</td></tr>
+    <tr><td>Desarrollador backend e integraciones</td><td>Por asignar</td><td>100 %</td><td>Conectores SUNAT, Sentinel, Odoo, WhatsApp, correo; motor de reglas</td></tr>
+    <tr><td>Desarrollador de agente</td><td>Por asignar</td><td>100 %</td><td>Orquestación con Claude, prompts, herramientas, evaluaciones</td></tr>
+    <tr><td>Dueño de reglas de riesgo</td><td>Coordinador de Riesgos e Inversión</td><td>15 %</td><td>Firma las reglas, valida el borrador de EVA en el piloto</td></tr>
+    <tr><td>Experta de proceso</td><td>Inbound Sales Executive</td><td>30 %</td><td>Etiqueta casos históricos, revisa cada respuesta del agente en el piloto</td></tr>
+    <tr><td>Datos</td><td>Business Analyst</td><td>15 %</td><td>Extrae los casos históricos de Odoo y el Monitor, arma el tablero de métricas</td></tr>
+    <tr><td>Seguridad y legal</td><td>Por asignar</td><td>Puntual</td><td>Tratamiento de datos personales (Ley 29733), contrato de uso de Sentinel, aviso al cliente de que conversa con un asistente</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="pruebas">Pruebas, piloto y métricas</h2>
+<p>El agente pasa a producción solo si en el set histórico y en el piloto en sombra decide igual que el equipo en al menos 9 de cada 10 leads. Los umbrales son una propuesta para validar con el dueño del producto.</p>
+<p><strong>Set histórico (semanas 1 a 2).</strong> Entre 100 y 150 leads de los últimos 6 meses con su resultado real, cubriendo: SQL derivados, MQL en nutrición, descartes por RUC, descartes por riesgo, clientes de cartera, duplicados, no comerciales, big deals, consorcios, sucursales extranjeras, EIRL y personas naturales.</p>
+<p><strong>Tres niveles de prueba:</strong></p>
+<ol>
+  <li><strong>Reglas:</strong> pruebas unitarias del motor contra cada umbral del proceso (calificaciones SBS por tamaño, protestos 10 % y 30 %, ratio mayor que 2, puntaje 0 a 8, big deal sobre 30 equipos, tolerancia de 10 % en trabajadores).</li>
+  <li><strong>Agente:</strong> reproducir el set histórico de punta a punta y comparar resultado, motivo, segmento, puntaje y ejecutivo asignado.</li>
+  <li><strong>Conversación:</strong> 30 conversaciones simuladas revisadas por la Inbound Sales Executive con una rúbrica de tono, datos pedidos y reglas prohibidas.</li>
+</ol>
+<p><strong>Piloto en sombra (semanas 9 y 10).</strong> El agente procesa cada lead real en paralelo; la Inbound Sales Executive aprueba o corrige antes de que salga cualquier mensaje. Riesgos revisa cada borrador de EVA.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Métrica</th><th>Meta propuesta</th><th>Dónde se mide</th></tr></thead>
+  <tbody>
+    <tr><td>Primer contacto en horario</td><td>95 % en menos de 15 minutos</td><td>Monitor de Leads</td></tr>
+    <tr><td>Coincidencia de decisión (SQL, MQL, descarte)</td><td>90 % o más</td><td>Set histórico y piloto</td></tr>
+    <tr><td>Derivaciones correctas (segmento y ejecutivo)</td><td>95 % o más</td><td>Odoo</td></tr>
+    <tr><td>Oportunidades con los 7 campos completos</td><td>100 %</td><td>Odoo</td></tr>
+    <tr><td>Respuestas que rompen una regla prohibida</td><td>0</td><td>Revisión del piloto</td></tr>
+    <tr><td>Borradores de EVA aceptados sin cambios por riesgos</td><td>80 % o más</td><td>Piloto</td></tr>
+    <tr><td>Derivación el mismo día</td><td>90 % o más</td><td>Odoo y canal interno</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="riesgos">Riesgos y mitigaciones</h2>
+<p>El mayor riesgo para el plazo es que las decisiones previas no se firmen a tiempo; el mayor riesgo de negocio es una respuesta equivocada a un cliente.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Riesgo</th><th>Efecto</th><th>Mitigación</th></tr></thead>
+  <tbody>
+    <tr><td>Las contradicciones del proceso no se cierran en 2 semanas</td><td>El motor de reglas se programa sobre supuestos y se rehace</td><td>Reglas como configuración, no código; arrancar con la lectura recomendada y marcarla como provisional</td></tr>
+    <tr><td>El agente da un precio, plazo o condición de pago</td><td>Compromiso comercial no autorizado</td><td>Lista de respuestas prohibidas en el prompt, filtro de salida antes de enviar y revisión humana durante el piloto</td></tr>
+    <tr><td>El LLM decide algo que debe decidir una regla</td><td>Decisiones inconsistentes y no auditables</td><td>Toda decisión de elegibilidad, puntaje y asignación sale del motor de reglas; el LLM solo extrae datos y conversa</td></tr>
+    <tr><td>Costo o límites de consultas a Sentinel</td><td>Gasto alto por leads sin calidad</td><td>Consultar Sentinel solo después de validar RUC 20 activo y correo corporativo</td></tr>
+    <tr><td>La API de SUNAT o Sentinel falla</td><td>Leads detenidos</td><td>Reintentos, cola de pendientes y aviso a la Inbound Sales Executive pasados 10 minutos</td></tr>
+    <tr><td>Tratamiento de datos personales del representante</td><td>Incumplimiento de la Ley 29733</td><td>Revisión legal antes del piloto, aviso de privacidad y registro de cada consulta</td></tr>
+    <tr><td>Rechazo del equipo comercial</td><td>Ejecutivos que no confían en la derivación</td><td>Derivación con el mismo formato de hoy y la Inbound Sales Executive como dueña del piloto</td></tr>
+    <tr><td>Clientes que prefieren hablar con una persona</td><td>Peor experiencia</td><td>Paso a humano en cualquier momento con una palabra clave o si el agente detecta molestia</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="pasos">Próximos pasos de esta semana</h2>
+<p>Antes del arranque del 2 de noviembre de 2026 hay que tener dueño, equipo y accesos.</p>
+<ul class="tasks">
+  <li>Nombrar al dueño del producto y a los dos desarrolladores</li>
+  <li>Agendar con el Coordinador de Riesgos la sesión para cerrar las decisiones previas</li>
+  <li>Pedir credenciales de prueba de WhatsApp Business API, Odoo y Sentinel</li>
+  <li>Elegir el proveedor de consulta RUC de SUNAT</li>
+  <li>Confirmar dónde viven el Monitor de Leads y el canal de derivación</li>
+  <li>Pedir al Business Analyst la extracción de 100 a 150 leads históricos con su resultado</li>
+  <li>Revisar con legal el uso de datos personales y el contrato de Sentinel</li>
+</ul>
+
+</main>
+</body>
+</html>
