@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Plan de Implementación de Agentes Inteligentes · Leasein</title>
-  <meta name="description" content="Plan de trabajo integral y cronograma Gantt para los 3 agentes inteligentes de Leasein.">
+  <title>Plan de Implementación de Agentes Inteligentes · Trimestre OND 2026 · Leasein</title>
+  <meta name="description" content="Plan de trabajo integral y cronograma Gantt para los 3 agentes inteligentes de Leasein con MVP del Agente 3 a 8 semanas (Diciembre 2026).">
   <style>
     :root {
       /* Paleta oficial de marca */
@@ -55,7 +55,6 @@
       padding: 48px 20px 80px;
     }
 
-    /* Encabezado */
     .header-tag {
       display: inline-block;
       font-size: 0.75rem;
@@ -67,6 +66,10 @@
       padding: 4px 10px;
       border-radius: 4px;
       margin-bottom: 12px;
+    }
+    .header-tag.quarter {
+      background: var(--c-orange);
+      margin-left: 6px;
     }
     h1 {
       font-size: 2.1rem;
@@ -81,7 +84,6 @@
       margin-bottom: 28px;
     }
 
-    /* Índice */
     nav {
       background: var(--surface);
       border: 1px solid var(--rule);
@@ -122,7 +124,6 @@
       color: var(--ink);
     }
 
-    /* Tarjetas de Agentes */
     .agent-card {
       background: var(--surface);
       border: 1px solid var(--rule);
@@ -147,7 +148,6 @@
     .badge-orange { background: var(--c-orange-tint); color: var(--c-orange); }
     .badge-purple { background: var(--c-deep-purple-tint); color: var(--c-deep-purple); }
 
-    /* Tablas */
     .table-wrap {
       overflow-x: auto;
       margin: 20px 0;
@@ -185,7 +185,6 @@
       font-size: 0.85em;
     }
 
-    /* Gráficos SVG */
     figure { margin: 28px 0; }
     figure svg {
       width: 100%;
@@ -203,21 +202,13 @@
       text-align: right;
     }
 
-    ul.tasks {
-      list-style: none;
-      padding-left: 0;
-    }
-    ul.tasks li {
-      padding: 5px 0;
-      position: relative;
-      padding-left: 24px;
-    }
-    ul.tasks li::before {
-      content: "■";
-      position: absolute;
-      left: 4px;
-      color: var(--c-orange);
-      font-size: 0.8rem;
+    .callout {
+      background: var(--c-orange-tint);
+      border-left: 4px solid var(--c-orange);
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin: 16px 0;
+      font-size: 0.92rem;
     }
 
     @media (max-width: 680px) {
@@ -230,17 +221,18 @@
 <main>
 
   <span class="header-tag">Ecosistema de Inteligencia Artificial</span>
+  <span class="header-tag quarter">Plan Trimestre OND 2026</span>
   <h1>Plan Maestro de Agentes · Leasein</h1>
-  <div class="byline">Octubre 2026 – Enero 2027 · Coordinación de Tecnología, Marketing y Riesgos</div>
+  <div class="byline">Q4 (Octubre, Noviembre, Diciembre 2026) · Coordinación de Tecnología, Marketing y Riesgos</div>
 
   <nav>
     <strong>Índice de Contenidos</strong>
     <ol>
-      <li><a href="#vision">1. Visión y arquitectura del embudo</a></li>
+      <li><a href="#vision">1. Estrategia y alcance del trimestre OND 2026</a></li>
       <li><a href="#agente1">2. Agente 1: Identificador de mejoras web</a></li>
       <li><a href="#agente2">3. Agente 2: Captador de necesidades</a></li>
-      <li><a href="#agente3">4. Agente 3: Evaluador de leads (EVA)</a></li>
-      <li><a href="#gantt">5. Diagrama de Gantt consolidado</a></li>
+      <li><a href="#agente3">4. Agente 3: Evaluador de leads (MVP en 8 semanas)</a></li>
+      <li><a href="#gantt">5. Diagrama de Gantt OND 2026</a></li>
       <li><a href="#matriz-hitos">6. Matriz de hitos y criterios de entrega</a></li>
       <li><a href="#riesgos">7. Riesgos y mitigaciones</a></li>
     </ol>
@@ -248,12 +240,12 @@
 
   <!-- 1. VISION -->
   <section id="vision">
-    <h2>1. Visión y Arquitectura del Embudo</h2>
-    <p>Para escalar las operaciones comerciales de Leasein, se implementa una arquitectura integrada de tres agentes especializados que acompañan todo el ciclo del lead, asegurando tráfico eficiente, perfilamiento técnico inmediato y rigurosidad crediticia:</p>
+    <h2>1. Estrategia y Alcance del Trimestre OND 2026</h2>
+    <p>El plan del trimestre <strong>Octubre-Noviembre-Diciembre (OND) 2026</strong> concentra el esfuerzo técnico y comercial de Leasein en desplegar una solución completa y funcional de inteligencia artificial antes del cierre de año, integrando los tres frentes clave del embudo:</p>
     <ul>
-      <li><strong>Agente 1 (Top-of-funnel):</strong> Optimiza el posicionamiento orgánico, SEO y código web para maximizar el tráfico calificado.</li>
-      <li><strong>Agente 2 (Mid-funnel):</strong> Conecta en tiempo real con el inventario de <code>Corein</code>, orienta la necesidad del cliente y filtra prospectos con Whitelist/Blacklist.</li>
-      <li><strong>Agente 3 (Bottom-of-funnel / Riesgo):</strong> Automatiza la primera atención inbound, consulta SUNAT/Sentinel y prepara en modo sombra el borrador de la EVA.</li>
+      <li><strong>Agente 1 (Top-of-funnel):</strong> Optimización continua de SEO y auditoría de código web para captar tráfico con mayor intención comercial.</li>
+      <li><strong>Agente 2 (Mid-funnel):</strong> Orientación interactiva conectada a <code>Corein</code> para levantar necesidades y validar stock, Whitelist y Blacklist.</li>
+      <li><strong>Agente 3 (Bottom-of-funnel - MVP 8 Semanas):</strong> Enfoque ágil acelerado a 8 semanas para tener el Producto Mínimo Viable (MVP) completamente operativo la <strong>segunda semana de diciembre de 2026</strong> (primera atención inbound + borrador EVA).</li>
     </ul>
   </section>
 
@@ -264,13 +256,13 @@
       <span class="badge badge-blue">SEO & CRO</span>
       <span class="badge badge-purple">Marketing</span>
       <h3>Mejora continua de posicionamiento y conversión</h3>
-      <p>Este agente formula planes de acción tácticos para potenciar el tráfico de calidad, detectando anomalías o debilidades a nivel de arquitectura y código web, monitoreando sistemáticamente a competidores del sector de leasing tecnológico.</p>
+      <p>Proporciona tácticos continuos para optimizar la conversión de leads y el posicionamiento orgánico, evaluando la competencia e identificando oportunidades a nivel de arquitectura y código web.</p>
       
-      <h4>Cronograma de 3 Fases:</h4>
+      <h4>Hitos de Ejecución en OND:</h4>
       <ul>
-        <li><strong>Fase 1 (Diagnóstico inicial):</strong> Culminó exitosamente la semana pasada. Se identificaron las bases de optimización SEO y la infraestructura tecnológica actual.</li>
-        <li><strong>Fase 2 (Capacidad de aprendizaje):</strong> En desarrollo hasta el <strong>miércoles 28 de octubre</strong>. Otorga al agente retroalimentación continua según métricas de comportamiento y variaciones de tráfico.</li>
-        <li><strong>Fase 3 (Entrega operativa a Marketing):</strong> Cierre el <strong>viernes 30 de octubre</strong>. Versión lista para su utilización diaria por el equipo de marketing.</li>
+        <li><strong>Fase 1 (Diagnóstico inicial):</strong> Completada la semana previa al 26 de octubre.</li>
+        <li><strong>Fase 2 (Capacidad de aprendizaje):</strong> En curso hasta el <strong>miércoles 28 de octubre</strong>, incorporando capacidad de adaptación a las variaciones del tráfico.</li>
+        <li><strong>Fase 3 (Entrega a Marketing):</strong> Cierre el <strong>viernes 30 de octubre</strong> con la entrega de la versión operativa para el equipo de marketing.</li>
       </ul>
     </div>
   </section>
@@ -280,185 +272,163 @@
     <h2>3. Agente 2: Captador de Necesidades Web</h2>
     <div class="agent-card agent-2">
       <span class="badge badge-orange">Interacción Web</span>
-      <span class="badge badge-blue">Inventario Corein</span>
-      <h3>Orientación contextual y perfilamiento en tiempo real</h3>
-      <p>Interactúa activamente con el usuario que navega por el portal de Leasein. Su función es levantar información detallada mientras guía al visitante respecto al hardware (laptops, workstations, servidores) y modalidad de servicio idónea para su operativa.</p>
+      <span class="badge badge-blue">Corein / Whitelist / Blacklist</span>
+      <h3>Orientación contextual y captura de demanda calificada</h3>
+      <p>Guía al usuario que interactúa en la web recomendando el hardware y servicio ideal mientras levanta requerimientos de volumen, plazo y perfil de negocio.</p>
       
-      <h4>Conectores y Reglas Críticas:</h4>
+      <h4>Integraciones y Calendario:</h4>
       <ul>
-        <li><strong>Inventario en Corein:</strong> Consulta stock disponible en tiempo real para no ofrecer equipos sin rotación inmediata.</li>
-        <li><strong>Whitelist &amp; Blacklist:</strong> Identifica de forma preliminar clientes recurrentes con condiciones preferentes o empresas bloqueadas/no sujetas a crédito.</li>
-        <li><strong>Entrega de Información:</strong> Estructura el requerimiento capturado (cantidad, plazos, perfil técnico) para alimentar al Agente 3.</li>
+        <li><strong>Conectividad:</strong> Conexión con el inventario disponible en <code>Corein</code>, aplicación estricta de Whitelist (clientes autorizados/preferentes) y Blacklist (empresas bloqueadas).</li>
+        <li><strong>Cronograma:</strong> Levantamiento de procesos y diseño de integración iniciado la semana del 26 de octubre; entrega y calibración final proyectada para la <strong>primera semana de noviembre (viernes 6 de noviembre)</strong>.</li>
       </ul>
-      <p><strong>Plazo de ejecución:</strong> El levantamiento de procesos y la conexión con Corein inician esta semana (26-30 de octubre), proyectando la entrega total durante la <strong>primera semana de noviembre (6 de noviembre)</strong>.</p>
     </div>
   </section>
 
   <!-- 4. AGENTE 3 -->
   <section id="agente3">
-    <h2>4. Agente 3: Evaluador de Leads (EVA)</h2>
+    <h2>4. Agente 3: Evaluador de Leads (Propuesta MVP 8 Semanas)</h2>
     <div class="agent-card agent-3">
       <span class="badge badge-purple">Calificación de Riesgo</span>
+      <span class="badge badge-orange">MVP 8 Semanas</span>
       <span class="badge badge-blue">Odoo & Sentinel</span>
-      <h3>Atención Inbound y Preparación Asistida de la EVA</h3>
-      <p>Desarrollado en 13 semanas (2 de noviembre de 2026 al 29 de enero de 2027) sobre la API de Claude y un motor determinístico en código. Atiende las etapas 1 a 5 del flujo comercial y elabora en modo sombra el borrador de evaluación crediticia (etapa 8).</p>
+      <h3>Atención Inbound y Preparación Asistida de la EVA (Meta: 2da semana Dic 2026)</h3>
+      
+      <div class="callout">
+        <strong>Aceleración de Proyecto:</strong> Para capturar el cierre del trimestre comercial OND 2026, el agente evaluador se estructura como un <strong>MVP de 8 semanas</strong> (del 19 de octubre al 11 de diciembre de 2026), permitiendo cerrar el ciclo completo de tráfico a ventas antes del fin de año.
+      </div>
 
-      <h4>Alcance por Etapa del Proceso</h4>
+      <h4>Estructura de las 8 Semanas de Trabajo (MVP):</h4>
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
-              <th>Etapa</th>
-              <th>Actividad del Agente</th>
-              <th>Responsable de Decisión</th>
+              <th>Semanas</th>
+              <th>Fase del MVP</th>
+              <th>Entregables y Foco Clave</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>1 · Ingreso</strong></td>
-              <td>Recibe leads de WhatsApp, correo, formularios y cotizador web. Registra en Monitor de Leads y detecta duplicados.</td>
-              <td>Agente (Motor de reglas)</td>
+              <td><strong>Semana 1-2</strong><br>(19 - 30 Oct)</td>
+              <td>Preparación y Reglas Clave</td>
+              <td>Definición y firma de reglas críticas con Riesgos (Gate 1); recolección de set histórico inicial de 80-100 leads.</td>
             </tr>
             <tr>
-              <td><strong>2 · Primer contacto</strong></td>
-              <td>Responde en menos de 15 min en horario y solicita datos mínimos estructurados.</td>
-              <td>Agente</td>
+              <td><strong>Semana 3-4</strong><br>(02 - 13 Nov)</td>
+              <td>Conectores Básicos &amp; Motor</td>
+              <td>Integración prioritaria a API de WhatsApp, Odoo, consulta RUC SUNAT y Sentinel; motor determinístico en código.</td>
             </tr>
             <tr>
-              <td><strong>3 · Validación y filtro</strong></td>
-              <td>Consulta SUNAT, Sentinel (Experian) y Corein. Verifica dominio corporativo y cartera vigente.</td>
-              <td>Agente / Casos grises a Riesgos</td>
+              <td><strong>Semana 5-6</strong><br>(16 - 27 Nov)</td>
+              <td>Claude &amp; Calificación BANT</td>
+              <td>Agente conversacional en Claude para extracción de datos mínimos, scoring de leads (0 a 8) y derivación Odoo. Gate 2 de coincidencia histórica.</td>
             </tr>
             <tr>
-              <td><strong>4 · Calificación</strong></td>
-              <td>Aplica BANT, detecta intención y calcula puntaje de 0 a 8 para clasificación SQL / MQL.</td>
-              <td>Agente</td>
+              <td><strong>Semana 7</strong><br>(30 Nov - 04 Dic)</td>
+              <td>Piloto en Sombra Controlado</td>
+              <td>Procesamiento de leads reales con aprobación humana del mensaje (Inbound Sales Executive) y generación del primer borrador EVA.</td>
             </tr>
             <tr>
-              <td><strong>5 · Derivación</strong></td>
-              <td>Crea oportunidad en Odoo con 7 campos obligatorios, asigna por rotación y notifica a ventas.</td>
-              <td>Agente / Confirmación de ejecutivo</td>
-            </tr>
-            <tr>
-              <td><strong>8 · EVA (Sombra)</strong></td>
-              <td>Lee Sentinel de empresa y socios, calcula ratio financiero, evalúa protestos y propone condición de pago.</td>
-              <td>Coordinador de Riesgos e Inversión</td>
+              <td><strong>Semana 8</strong><br>(07 - 11 Dic)</td>
+              <td>Despliegue MVP Operativo</td>
+              <td><strong>Go-Live del MVP en la 2da semana de diciembre (11 Dic):</strong> canal WhatsApp y web activos en horario laboral y derivación directa a ejecutivos.</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h4>Reglas Inquebrantables del Agente</h4>
-      <p>El agente <strong>nunca</strong> proporciona precios finales, no estipula fechas de entrega, no autoriza condiciones de pago, no aprueba excepciones ni emite dictámenes definitivos de EVA sin firma humana.</p>
+      <h4>Foco del MVP frente a Versiones Futuras</h4>
+      <p>El MVP OND 2026 cubre la primera atención (etapas 1 a 5) y el borrador de EVA (etapa 8) para casos estándar. Quedan para la siguiente iteración los casos altamente atípicos, cotización autónoma de precios y flujos post-asignación.</p>
     </div>
   </section>
 
   <!-- 5. GANTT -->
   <section id="gantt">
-    <h2>5. Diagrama de Gantt Consolidado</h2>
-    <p>El cronograma refleja la alineación temporal de los 3 agentes: el cierre inmediato de los agentes 1 y 2 da paso al despliegue estructurado de 13 semanas del agente evaluador de leads.</p>
+    <h2>5. Diagrama de Gantt Consolidado · Trimestre OND 2026</h2>
+    <p>Cronograma maestro que refleja el cierre de los Agentes 1 y 2, y el recorrido de 8 semanas del MVP del Agente 3 con fecha de Go-Live el <strong>11 de diciembre de 2026</strong>.</p>
 
     <figure>
-      <svg viewBox="0 0 860 480" role="img" aria-label="Cronograma de trabajo para los 3 agentes Leasein" font-size="11">
-        <defs>
-          <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M0 1.5L8 5L0 8.5z" fill="#5F5F5F"/>
-          </marker>
-        </defs>
-
-        <!-- Ejes verticales y fechas -->
+      <svg viewBox="0 0 860 410" role="img" aria-label="Cronograma de trabajo OND 2026 para los 3 agentes Leasein" font-size="11">
+        <!-- Ejes verticales y semanas -->
         <g stroke="#e5e5ea" stroke-width="1">
-          <line x1="220" x2="220" y1="40" y2="440" />
-          <line x1="290" x2="290" y1="40" y2="440" stroke-dasharray="3 3"/>
-          <line x1="360" x2="360" y1="40" y2="440" stroke-dasharray="3 3"/>
-          <line x1="430" x2="430" y1="40" y2="440" stroke-dasharray="3 3"/>
-          <line x1="500" x2="500" y1="40" y2="440" stroke-dasharray="3 3"/>
-          <line x1="570" x2="570" y1="40" y2="440" stroke-dasharray="3 3"/>
-          <line x1="640" x2="640" y1="40" y2="440" stroke-dasharray="3 3"/>
-          <line x1="710" x2="710" y1="40" y2="440" stroke-dasharray="3 3"/>
-          <line x1="780" x2="780" y1="40" y2="440" stroke-dasharray="3 3"/>
-          <line x1="840" x2="840" y1="40" y2="440" stroke="#FE5000" stroke-width="1.5"/>
+          <line x1="220" x2="220" y1="40" y2="370" />
+          <line x1="290" x2="290" y1="40" y2="370" stroke-dasharray="3 3"/>
+          <line x1="370" x2="370" y1="40" y2="370" stroke-dasharray="3 3"/>
+          <line x1="450" x2="450" y1="40" y2="370" stroke-dasharray="3 3"/>
+          <line x1="530" x2="530" y1="40" y2="370" stroke-dasharray="3 3"/>
+          <line x1="610" x2="610" y1="40" y2="370" stroke-dasharray="3 3"/>
+          <line x1="690" x2="690" y1="40" y2="370" stroke-dasharray="3 3"/>
+          <line x1="770" x2="770" y1="40" y2="370" stroke-dasharray="3 3"/>
+          <line x1="770" x2="770" y1="40" y2="370" stroke="#FE5000" stroke-width="2"/>
         </g>
 
-        <!-- Encabezados de tiempo -->
+        <!-- Cabeceras de semanas OND -->
         <g fill="#5F5F5F" font-weight="600" text-anchor="middle">
-          <text x="255" y="28">Oct 26</text>
-          <text x="325" y="28">Nov 02</text>
-          <text x="395" y="28">Nov 16</text>
-          <text x="465" y="28">Nov 30</text>
-          <text x="535" y="28">Dic 14</text>
-          <text x="605" y="28">Dic 28</text>
-          <text x="675" y="28">Ene 11</text>
-          <text x="745" y="28">Ene 25</text>
-          <text x="835" y="28" fill="#FE5000">Go-Live</text>
+          <text x="255" y="28">Sem 1 (19 Oct)</text>
+          <text x="330" y="28">Sem 2 (26 Oct)</text>
+          <text x="410" y="28">Sem 3 (02 Nov)</text>
+          <text x="490" y="28">Sem 4 (09 Nov)</text>
+          <text x="570" y="28">Sem 5 (16 Nov)</text>
+          <text x="650" y="28">Sem 6 (23 Nov)</text>
+          <text x="730" y="28">Sem 7 (30 Nov)</text>
+          <text x="805" y="28" fill="#FE5000">Sem 8 (07-11 Dic)</text>
         </g>
 
-        <!-- Bloque Agente 1 -->
+        <!-- Agente 1 -->
         <text x="15" y="65" font-weight="700" fill="#5362C5">AGENTE 1: MEJORAS WEB</text>
-        
-        <text x="25" y="86" fill="#1e1e24">Fase 1: Diagnóstico SEO</text>
-        <rect x="220" y="74" width="30" height="15" rx="3" fill="#e5e5ea" stroke="#5F5F5F"/>
-        
-        <text x="25" y="108" fill="#1e1e24">Fase 2: Aprendizaje (28 Oct)</text>
-        <rect x="250" y="96" width="35" height="15" rx="3" fill="#5362C5" />
-        <path d="M285 96 L290 103.5 L285 111 L280 103.5 Z" fill="#FE5000" />
-        
-        <text x="25" y="130" fill="#1e1e24">Fase 3: Versión Marketing (30 Oct)</text>
-        <rect x="285" y="118" width="20" height="15" rx="3" fill="#5362C5" />
-        <path d="M305 118 L310 125.5 L305 133 L300 125.5 Z" fill="#FE5000" />
+        <text x="25" y="86" fill="#1e1e24">Fase 1: Diagnóstico (Completado)</text>
+        <rect x="220" y="74" width="70" height="15" rx="3" fill="#e5e5ea" stroke="#5F5F5F"/>
 
-        <!-- Bloque Agente 2 -->
+        <text x="25" y="108" fill="#1e1e24">Fase 2: Aprendizaje (28 Oct)</text>
+        <rect x="290" y="96" width="30" height="15" rx="3" fill="#5362C5" />
+        <path d="M320 96 L325 103.5 L320 111 L315 103.5 Z" fill="#FE5000" />
+
+        <text x="25" y="130" fill="#1e1e24">Fase 3: Versión Marketing (30 Oct)</text>
+        <rect x="320" y="118" width="20" height="15" rx="3" fill="#5362C5" />
+        <path d="M340 118 L345 125.5 L340 133 L335 125.5 Z" fill="#FE5000" />
+
+        <!-- Agente 2 -->
         <line x1="15" x2="840" y1="145" y2="145" stroke="#e5e5ea" />
         <text x="15" y="165" font-weight="700" fill="#FE5000">AGENTE 2: CAPTADOR WEB</text>
-        
-        <text x="25" y="186" fill="#1e1e24">Levantamiento &amp; Conexión Corein</text>
-        <rect x="250" y="174" width="60" height="15" rx="3" fill="rgba(254,80,0,0.3)" stroke="#FE5000"/>
-        
+        <text x="25" y="186" fill="#1e1e24">Procesos &amp; Conexión Corein</text>
+        <rect x="290" y="174" width="50" height="15" rx="3" fill="rgba(254,80,0,0.3)" stroke="#FE5000"/>
+
         <text x="25" y="208" fill="#1e1e24">Whitelist/Blacklist &amp; Calibración</text>
-        <rect x="310" y="196" width="40" height="15" rx="3" fill="#FE5000" />
-        <!-- Hito Agente 2 -->
-        <path d="M350 196 L356 203.5 L350 211 L344 203.5 Z" fill="#2D1B6C" />
-        <text x="362" y="208" font-size="9" fill="#2D1B6C" font-weight="700">Listo (1ra sem Nov)</text>
+        <rect x="340" y="196" width="45" height="15" rx="3" fill="#FE5000" />
+        <path d="M385 196 L391 203.5 L385 211 L379 203.5 Z" fill="#2D1B6C" />
+        <text x="395" y="208" font-size="9" fill="#2D1B6C" font-weight="700">Listo (06 Nov)</text>
 
-        <!-- Bloque Agente 3 -->
+        <!-- Agente 3: MVP 8 Semanas -->
         <line x1="15" x2="840" y1="225" y2="225" stroke="#e5e5ea" />
-        <text x="15" y="245" font-weight="700" fill="#2D1B6C">AGENTE 3: EVALUADOR LEADS (13 SEMANAS)</text>
+        <text x="15" y="245" font-weight="700" fill="#2D1B6C">AGENTE 3: EVALUADOR LEADS (MVP 8 SEMANAS)</text>
         
-        <text x="25" y="266" fill="#1e1e24">Fase 0: Preparación y Accesos</text>
-        <rect x="325" y="254" width="60" height="15" rx="3" fill="rgba(45,27,108,0.2)" stroke="#2D1B6C"/>
-        <!-- Gate 1 -->
-        <path d="M385 254 L391 261.5 L385 269 L379 261.5 Z" fill="#FE5000" />
-        <text x="395" y="266" font-size="9" fill="#FE5000" font-weight="600">Gate 1: Reglas (13 Nov)</text>
+        <text x="25" y="266" fill="#1e1e24">Sem 1-2: Reglas &amp; Set Histórico</text>
+        <rect x="220" y="254" width="150" height="15" rx="3" fill="rgba(45,27,108,0.2)" stroke="#2D1B6C"/>
+        <path d="M370 254 L376 261.5 L370 269 L364 261.5 Z" fill="#FE5000" />
+        <text x="375" y="248" font-size="9" fill="#FE5000" font-weight="600">Gate 1: Reglas</text>
 
-        <text x="25" y="296" fill="#1e1e24">Fase 1: Motor Reglas e Integraciones</text>
-        <rect x="385" y="284" width="140" height="15" rx="3" fill="#5362C5" />
+        <text x="25" y="296" fill="#1e1e24">Sem 3-4: Conectores (Odoo, Sentinel, SUNAT)</text>
+        <rect x="370" y="284" width="160" height="15" rx="3" fill="#5362C5" />
 
-        <text x="25" y="326" fill="#1e1e24">Fase 2: Agente Conversacional (Claude)</text>
-        <rect x="455" y="314" width="130" height="15" rx="3" fill="#2D1B6C" />
-        <!-- Gate 2 -->
-        <path d="M585 314 L591 321.5 L585 329 L579 321.5 Z" fill="#FE5000" />
-        <text x="595" y="326" font-size="9" fill="#FE5000" font-weight="600">Gate 2: 90% Histórico</text>
+        <text x="25" y="326" fill="#1e1e24">Sem 5-6: Claude Conversacional &amp; BANT</text>
+        <rect x="530" y="314" width="160" height="15" rx="3" fill="#2D1B6C" />
+        <path d="M690 314 L696 321.5 L690 329 L684 321.5 Z" fill="#FE5000" />
+        <text x="695" y="326" font-size="9" fill="#FE5000" font-weight="600">Gate 2: 90% Histórico</text>
 
-        <text x="25" y="356" fill="#1e1e24">Fase 3: Piloto en Sombra (Leads reales)</text>
-        <rect x="585" y="344" width="65" height="15" rx="3" fill="rgba(83,98,197,0.3)" stroke="#5362C5"/>
+        <text x="25" y="356" fill="#1e1e24">Sem 7-8: Piloto en Sombra &amp; Go-Live MVP</text>
+        <rect x="690" y="344" width="80" height="15" rx="3" fill="#FE5000" />
 
-        <text x="25" y="386" fill="#1e1e24">Borrador de EVA en Sombra (Riesgos)</text>
-        <rect x="585" y="374" width="250" height="15" rx="3" fill="rgba(45,27,108,0.25)" stroke="#2D1B6C"/>
-
-        <text x="25" y="416" fill="#1e1e24">Fase 4: Salida a Producción Gradual</text>
-        <rect x="650" y="404" width="185" height="15" rx="3" fill="#FE5000" />
-
-        <!-- Hito Final Go Live -->
-        <path d="M835 402 L845 411.5 L835 421 L825 411.5 Z" fill="#FE5000" />
-        <text x="760" y="438" font-size="10" font-weight="700" fill="#FE5000">29 Ene: 100% Inbound</text>
+        <!-- Hito Go Live 11 Dic -->
+        <path d="M770 342 L780 351.5 L770 361 L760 351.5 Z" fill="#FE5000" />
+        <text x="735" y="378" font-size="10" font-weight="800" fill="#FE5000">11 Dic: Go-Live MVP</text>
       </svg>
-      <figcaption>Cronograma unificado con hitos clave (rombos naranja y morado)</figcaption>
+      <figcaption>Cronograma OND 2026: Go-Live del MVP del Agente 3 en la 2da semana de diciembre</figcaption>
     </figure>
   </section>
 
   <!-- 6. MATRIZ HITOS -->
   <section id="matriz-hitos">
-    <h2>6. Matriz de Hitos y Criterios de Entrega</h2>
+    <h2>6. Matriz de Hitos y Criterios de Entrega (OND 2026)</h2>
     <div class="table-wrap">
       <table>
         <thead>
@@ -473,44 +443,44 @@
           <tr>
             <td><strong>28 Oct 2026</strong></td>
             <td>Agente 1</td>
-            <td>Módulo de Aprendizaje Activo</td>
-            <td>El agente incorpora feedback de comportamiento para reorientar tácticos de posicionamiento.</td>
+            <td>Módulo de Aprendizaje</td>
+            <td>Ajuste de sugerencias de optimización basado en comportamiento web reciente.</td>
           </tr>
           <tr>
             <td><strong>30 Oct 2026</strong></td>
             <td>Agente 1</td>
-            <td>Entrega a Marketing</td>
-            <td>Generación autónoma de sugerencias técnicas en código y SEO lista para uso interno.</td>
+            <td>Entrega Operativa Marketing</td>
+            <td>Equipo de marketing capacitado para ejecutar recomendaciones SEO y tácticos de código.</td>
           </tr>
           <tr>
             <td><strong>06 Nov 2026</strong></td>
             <td>Agente 2</td>
-            <td>Captador Web Operativo</td>
-            <td>Conexión con Corein verificada; filtrado ágil con Whitelist y Blacklist sin colisiones.</td>
+            <td>Captador Web Listo</td>
+            <td>Conexión con stock en Corein validada; detección de listas blancas/negras activa.</td>
           </tr>
           <tr>
-            <td><strong>13 Nov 2026</strong></td>
+            <td><strong>30 Oct 2026</strong></td>
             <td>Agente 3</td>
-            <td>Gate 1: Definiciones Previas</td>
-            <td>Riesgos y Negocio firman las 10 reglas (tratamiento EIRL, scoring, políticas de rechazo).</td>
+            <td>Gate 1: Reglas de Riesgo MVP</td>
+            <td>Aprobación de matriz de descarte y umbrales crediticios esenciales con el Coordinador de Riesgos.</td>
           </tr>
           <tr>
-            <td><strong>24 Dic 2026</strong></td>
+            <td><strong>27 Nov 2026</strong></td>
             <td>Agente 3</td>
-            <td>Gate 2: Precisión Conversacional</td>
-            <td>90% de coincidencia sobre set histórico de 150 leads y 0 respuestas indebidas en simulaciones.</td>
+            <td>Gate 2: Precisión en Histórico</td>
+            <td>Coincidencia superior al 90% en clasificación SQL/MQL sobre set de prueba y 0 errores prohibidos.</td>
           </tr>
           <tr>
-            <td><strong>08 Ene 2027</strong></td>
+            <td><strong>04 Dic 2026</strong></td>
             <td>Agente 3</td>
-            <td>Fin de Piloto en Sombra</td>
-            <td>El ejecutivo inbound valida y aprueba respuestas reales con respuesta menor a 15 min.</td>
+            <td>Cierre de Piloto en Sombra</td>
+            <td>Supervisión asistida de 1 semana con el ejecutivo inbound aprobando mensajes en tiempo real.</td>
           </tr>
           <tr>
-            <td><strong>29 Ene 2027</strong></td>
+            <td><strong>11 Dic 2026</strong></td>
             <td>Agente 3</td>
-            <td>Pase a Producción 100%</td>
-            <td>Atención integral de canales de entrada; 80% de borradores EVA aceptados sin corrección.</td>
+            <td><strong>Go-Live MVP (2da sem Dic)</strong></td>
+            <td><strong>Puesta en producción de la primera atención de leads inbound y generación del borrador EVA en Odoo.</strong></td>
           </tr>
         </tbody>
       </table>
@@ -519,31 +489,31 @@
 
   <!-- 7. RIESGOS -->
   <section id="riesgos">
-    <h2>7. Riesgos y Mitigaciones</h2>
+    <h2>7. Riesgos y Mitigaciones del Plan Acelerado</h2>
     <div class="table-wrap">
       <table>
         <thead>
           <tr>
             <th>Riesgo Identificado</th>
             <th>Impacto</th>
-            <th>Estrategia de Mitigación</th>
+            <th>Estrategia de Mitigación en OND</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Desfase en la conexión de inventario Corein (Agente 2)</td>
-            <td>Recomendaciones imprecisas al usuario web</td>
-            <td>Comenzar pruebas con réplica de base de datos en semana 1 y fallback a catálogo estático categorizado.</td>
+            <td>Compresión de tiempos a 8 semanas en Agente 3</td>
+            <td>Sobrecarga en integraciones complejas</td>
+            <td>Acotar el MVP a canales WhatsApp y formularios web; mantener Odoo y Sentinel con endpoints prioritarios.</td>
           </tr>
           <tr>
-            <td>Alucinación en precios o plazos comerciales (Agente 3)</td>
-            <td>Compromisos legales y comerciales erróneos</td>
-            <td>El LLM solo extrae y redacta. El motor de reglas bloquea cotizaciones directas en la primera atención.</td>
+            <td>Retrasos en la disponibilidad de APIs externas (Sentinel/SUNAT)</td>
+            <td>Bloqueo del motor de calificación</td>
+            <td>Utilizar mocks validados en las semanas 3-4 mientras se completan credenciales finales de producción.</td>
           </tr>
           <tr>
-            <td>Falta de consenso en reglas de riesgo antes del 13 Nov</td>
-            <td>Paralización del motor de reglas</td>
-            <td>Implementar motor paramétrico mediante configuración desacoplada del código fuente.</td>
+            <td>Resistencia al borrador de EVA</td>
+            <td>Falta de adopción por Riesgos</td>
+            <td>El MVP entrega borrador en modo sombra como apoyo consultivo; la decisión final se mantiene 100% en el analista.</td>
           </tr>
         </tbody>
       </table>
